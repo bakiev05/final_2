@@ -1,14 +1,14 @@
 from django.db import models
+from mptt.models import MPTTModel, TreeForeignKey
 
 
 
-
-class Category(models.Model):
+class Category(MPTTModel):
     title = models.CharField(
         max_length=255,
         verbose_name='Наименование'
     )
-    parent = models.ForeignKey(
+    parent = TreeForeignKey(
         'self',
         on_delete=models.SET_NULL,
         related_name='children',
