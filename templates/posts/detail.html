@@ -1,0 +1,98 @@
+{% extends 'blog-details.html' %}
+{% block content %}
+<div class="blog-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="heading-title text-center">
+                    <h2>Blog</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                </div>
+            </div>
+        </div>
+        <div style="position: relative;" class="row">
+                <div class="col-xl-8 col-lg-8 col-12">
+                    <div class="blog-inner-details-page">
+                        <div class="blog-inner-box">
+                            <h4>{{ post.author.username}}</h4>
+                            
+                            {% if image.image %}
+                            {% for image in post.post_image.all %}
+                            <div class="side-blog-img">
+                                <img src="{{ image.image.url }}" class="card-img-top" alt="...">
+                            {% endfor %}
+                            {% endif %}
+                            
+                                <div class="date-blog-up">
+
+
+                                </div>
+                            </div>
+                            <div class="inner-blog-detail details-page">
+
+                                <div class="card-body">
+                                    <h4>{{ post.title }}</h4>
+                                    <p class="card-text">{{post.description}}</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">{{post.create_at}}</li>
+                                    <li class="list-group-item">{{post.category}}</li>
+                                    <li class="list-group-item"></li>
+                                </ul>
+                                <div class="card-body">
+                                    <button type="button" class="btn btn-dark">
+                                        <a href="{% url 'blog_post' %}">Go to blog</a>
+                                    </button>
+
+                                    <p>---</p>
+                                    <button type="button" class="btn btn-success">
+                                        <a href="{% url 'update_post' post.id %}" class="card-link">Update post</a>
+                                    </button>
+                                    <a class="btn btn-lg btn-circle btn-outline-new-white"
+                                       href="{% url 'index_reply'  %}">Replies</a>
+                                    {% for reply in reply %}
+
+                                    <p> {{reply.user}} </p>
+                                    <p> {{reply.text}} </p>
+                                    <p> {{reply.post}} </p>
+                                    {% endfor %}
+
+
+                                </div>
+                            </div>
+                            <div class="blog-comment-box">
+                                <h3>Replies: </h3>
+
+
+                            </div>
+                            <div class="comment-respond-box">
+                                <h3>Leave your reply </h3>
+                                <div class="comment-respond-form">
+                                    <form method="post" class="form-control">
+
+                                        <div class="col-lg-6 col-md-6 col-sm-6">
+                                            <div class="form-group">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="post_id" value="{{ post.id }}">
+                                                <input type="text" name="reply_text" class="form-control"
+                                                       placeholder="Оставьте комментарии...">
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <button type="submin" name="reply_text" class="btn btn-submit">
+                                                        Submit reply
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        {% endblock %}
