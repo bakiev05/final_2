@@ -14,3 +14,5 @@ class User(AbstractUser):
     age = models.PositiveIntegerField(default=0)
     gender = models.CharField(choices=GENDER_CHOICES, max_length=255)
 
+class Profile(models.Model):
+

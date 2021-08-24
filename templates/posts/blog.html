@@ -20,9 +20,9 @@
                     <div class="blog-detail">
                         <ul>
                             <p>Author: {{ post.author.username }}</p>
-                            {% if post.image %}
+                            
                             <img src="{{ post.post_image.first.image.url }}" class="img-fluid" alt="Image">
-                            {% endif %}
+                         
                             
                             <p> Posted: {{ post.create_at }}</p>
                             <h4>Category: {{ post.category }}</h4>

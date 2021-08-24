@@ -15,3 +15,5 @@ class RecipeImageForm(forms.ModelForm):
         widgets = {
             'image_recipe': forms.ClearableFileInput(attrs={'class': 'form-control-file'}),
         }
+
+

@@ -1,20 +1,20 @@
 from django.db import models
-from mptt.models import MPTTModel, TreeForeignKey
 
 
 
-class Category(MPTTModel):
+
+class Category(models.Model):
     title = models.CharField(
         max_length=255,
         verbose_name='Наименование'
     )
-    parent = TreeForeignKey(
+    parent = models.ForeignKey(
         'self',
         on_delete=models.SET_NULL,
         related_name='children',
         null=True, blank=True
     )
-  
+
 
 
     def __str__(self):

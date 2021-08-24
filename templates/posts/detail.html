@@ -16,13 +16,12 @@
                         <div class="blog-inner-box">
                             <h4>{{ post.author.username}}</h4>
                             
-                            {% if image.image %}
+                        
                             {% for image in post.post_image.all %}
                             <div class="side-blog-img">
                                 <img src="{{ image.image.url }}" class="card-img-top" alt="...">
                             {% endfor %}
-                            {% endif %}
-                            
+                         
                                 <div class="date-blog-up">
 
 
@@ -52,8 +51,8 @@
                                        href="{% url 'index_reply'  %}">Replies</a>
                                     {% for reply in reply %}
 
-                                    <p> {{reply.user}} </p>
-                                    <p> {{reply.text}} </p>
+                                    <p>Author: {{reply.user}}</p>
+                                    <p>Reply: {{reply.text}} </p>
                                     <p> {{reply.post}} </p>
                                     {% endfor %}
 
